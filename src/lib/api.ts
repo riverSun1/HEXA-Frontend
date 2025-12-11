@@ -1,5 +1,7 @@
+import { env } from './env';
+
 // 백엔드 API URL 설정
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_BASE_URL = env.API_BASE_URL;
 
 export type Gender = 'MALE' | 'FEMALE';
 

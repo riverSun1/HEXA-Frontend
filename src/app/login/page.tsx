@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
+import { env } from '@/lib/env';
 
 export default function LoginPage() {
   const { isLoggedIn, loading } = useAuth();
@@ -18,7 +19,7 @@ export default function LoginPage() {
   const handleGoogleLogin = () => {
     // 백엔드 OAuth URL로 리다이렉트
     // 백엔드가 Google OAuth 처리 후 쿠키 설정하고 프론트엔드로 리다이렉트
-    window.location.href = 'http://localhost:8000/auth/google';
+    window.location.href = `${env.API_BASE_URL}/auth/google`;
   };
 
   if (loading) {

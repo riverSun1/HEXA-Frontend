@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
-import { signup } from '@/lib/api';
+import { signup, type Gender } from '@/lib/api';
 
 function SignupContent() {
   const router = useRouter();
@@ -79,7 +79,7 @@ function SignupContent() {
         email: formData.email,
         password: formData.password,
         nickname: formData.nickname,
-        gender: formData.gender,
+        gender: formData.gender as Gender,
         mbti7Letter,
       });
 
@@ -168,19 +168,22 @@ function SignupContent() {
               <label className="block text-sm font-medium text-gray-600 mb-2">
                 성별 <span className="text-red-500">*</span>
               </label>
-              <div className="grid grid-cols-3 gap-3">
-                {['남성', '여성', '기타'].map((gender) => (
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { label: '남성', value: 'MALE' as Gender },
+                  { label: '여성', value: 'FEMALE' as Gender },
+                ].map((item) => (
                   <button
-                    key={gender}
+                    key={item.value}
                     type="button"
-                    onClick={() => handleInputChange('gender', gender)}
+                    onClick={() => handleInputChange('gender', item.value)}
                     className={`px-4 py-3 rounded-xl font-medium transition ${
-                      formData.gender === gender
+                      formData.gender === item.value
                         ? 'bg-pink-400 text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                   >
-                    {gender}
+                    {item.label}
                   </button>
                 ))}
               </div>
