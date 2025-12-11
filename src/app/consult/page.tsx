@@ -37,7 +37,7 @@ export default function ConsultPage() {
           </p>
           <button
             onClick={handleStart}
-            className="px-8 py-4 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+            className="cursor-pointer px-8 py-4 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
           >
             상담 시작하기
           </button>
